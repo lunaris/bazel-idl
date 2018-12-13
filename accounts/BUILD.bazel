@@ -1,0 +1,14 @@
+load("//bazel:haskell.bzl", "haskell_avro_library")
+
+exports_files([
+    "accounts.idl",
+])
+
+haskell_avro_library(
+    name = "api",
+    idl = ":accounts.idl",
+    module = "Accounts",
+    deps = [
+        "@hackage//:base",
+    ],
+)

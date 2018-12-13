@@ -1,0 +1,4 @@
+IMPORTS=
+RECORD_TYPE=Account
+ID_TYPE=String
+NAME_TYPE=String

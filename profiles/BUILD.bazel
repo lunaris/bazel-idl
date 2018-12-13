@@ -1,0 +1,36 @@
+load("//bazel:haskell.bzl", "haskell_avro_library")
+load("@io_tweag_rules_haskell//haskell:haskell.bzl", "haskell_library")
+
+exports_files([
+    "profiles.idl",
+])
+
+haskell_avro_library(
+    name = "accounts_api",
+    idl = "//accounts:accounts.idl",
+    module = "Accounts",
+    deps = [
+        "@hackage//:base",
+    ],
+)
+
+haskell_avro_library(
+    name = "api",
+    idl = ":profiles.idl",
+    module = "Profiles",
+    deps = [
+        "@hackage//:base",
+        "@hackage//:text",
+    ],
+)
+
+haskell_library(
+    name = "cqrs",
+    srcs = glob(["**/*.hs"]),
+    deps = [
+        ":accounts_api",
+        ":api",
+        "@hackage//:base",
+        "@hackage//:text",
+    ],
+)

@@ -1,0 +1,4 @@
+IMPORTS="import qualified Data.Text as Tx"
+RECORD_TYPE=Profile
+ID_TYPE=String
+NAME_TYPE=Tx.Text
