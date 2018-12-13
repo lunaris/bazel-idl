@@ -115,6 +115,35 @@ is not alphabetical but is an attempt at a logical ordering):
 
 _Note: You should have Nix installed for these to work, but beyond that Nix
 should take care of everything else. If it doesn't, please file an issue!_
+Your life will be easier though if you install `direnv` as well.
+
+
+### With direnv
+
+The first time you `cd` to the directory, tell `direnv` that you trust the
+`.envrc` file:
+
+```
+$ direnv allow .
+```
+
+Build everything:
+
+```
+$ bazel build //...
+```
+
+Launch GHCi in the CQRS implementation of the profiles package:
+
+```
+$ bazel run //profiles:cqrs@repl
+```
+
+### Without direnv
+
+Because `direnv` will put all binaries provided by `nix` (including `bazel`) in
+the path, if you don't use `direnv`, you will have to run `bazel` through
+`nix-shell` manually.
 
 Build everything:
 
